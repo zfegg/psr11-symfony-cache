@@ -1,5 +1,5 @@
-[![codecov](https://codecov.io/gl/blazon/psr11-symfony-cache/branch/master/graph/badge.svg?token=4qrIUhkR2g)](https://codecov.io/gl/blazon/psr11-symfony-cache)
-[![pipeline status](https://gitlab.com/blazon/psr11-symfony-cache/badges/master/pipeline.svg)](https://gitlab.com/blazon/psr11-symfony-cache/-/commits/master)
+[![codecov](https://codecov.io/gl/zfegg/psr11-symfony-cache/branch/master/graph/badge.svg?token=4qrIUhkR2g)](https://codecov.io/gl/zfegg/psr11-symfony-cache)
+[![pipeline status](https://gitlab.com/zfegg/psr11-symfony-cache/badges/master/pipeline.svg)](https://gitlab.com/zfegg/psr11-symfony-cache/-/commits/master)
 # PSR-11 Symfony Cache
 
 [Symfony Cache Component](https://symfony.com/doc/current/components/cache.html) Factories for PSR-11.
@@ -37,7 +37,7 @@
 # Installation
 
 ```bash
-composer require blazon/psr11-symfony-cache
+composer require zfegg/psr11-symfony-cache
 ```
 
 # Usage
@@ -64,7 +64,7 @@ Additional info can be found in the [documentation](https://symfony.com/doc/curr
 
 # Containers
 Any PSR-11 container wil work.  In order to do that you will need to add configuration
-and register a new service that points to `Blazon\PSR11SymfonyCache\CacheFactory` 
+and register a new service that points to `Zfegg\Psr11SymfonyCache\CacheFactory` 
 
 Below are some specific container examples to get you started
 
@@ -73,11 +73,11 @@ Below are some specific container examples to get you started
 // Create Container
 $container = new \Xtreamwayz\Pimple\Container([
     // Cache using the default keys.
-    'cache' => new \Blazon\PSR11SymfonyCache\CacheFactory(),
+    'cache' => new \Zfegg\Psr11SymfonyCache\CacheFactory(),
     
     // Second cache using a different cache configuration
     'other' => function($c) {
-        return \Blazon\PSR11SymfonyCache\CacheFactory::other($c);
+        return \Zfegg\Psr11SymfonyCache\CacheFactory::other($c);
     },
     
     // Config
@@ -126,10 +126,10 @@ $cache->delete('my_cache_key');
 $container = new \Zend\ServiceManager\ServiceManager([
     'factories' => [
         // Cache using the default keys.
-        'fileSystem' => \Blazon\PSR11SymfonyCache\CacheFactory::class,
+        'fileSystem' => \Zfegg\Psr11SymfonyCache\CacheFactory::class,
         
         // Second cache using a different cache configuration
-        'other' => [\Blazon\PSR11SymfonyCache\CacheFactory::class, 'other'],
+        'other' => [\Zfegg\Psr11SymfonyCache\CacheFactory::class, 'other'],
     ],
 ]);
 
@@ -185,10 +185,10 @@ return [
     'dependencies' => [
         'factories' => [
             // Cache using the default keys.
-            'fileSystem' => \Blazon\PSR11SymfonyCache\CacheFactory::class,
+            'fileSystem' => \Zfegg\Psr11SymfonyCache\CacheFactory::class,
             
             // Second cache using a different filesystem configuration
-            'someOtherAdaptor' => [\Blazon\PSR11SymfonyCache\CacheFactory::class, 'someOtherAdaptor'],
+            'someOtherAdaptor' => [\Zfegg\Psr11SymfonyCache\CacheFactory::class, 'someOtherAdaptor'],
         ],
     ],
     
@@ -222,10 +222,10 @@ return [
     'service_manager' => [
         'factories' => [
             // Cache using the default keys.
-            'fileSystem' => \Blazon\PSR11SymfonyCache\CacheFactory::class,
+            'fileSystem' => \Zfegg\Psr11SymfonyCache\CacheFactory::class,
             
             // Second cache using a different configuration
-            'someOtherAdaptor' => [\Blazon\PSR11SymfonyCache\CacheFactory::class, 'someOtherAdaptor'],
+            'someOtherAdaptor' => [\Zfegg\Psr11SymfonyCache\CacheFactory::class, 'someOtherAdaptor'],
         ],
     ],
     
@@ -286,11 +286,11 @@ $app = new \Slim\App($config);
 $container = $app->getContainer();
 
 // Cache using the default keys.
-$container['fileSystem'] = new \Blazon\PSR11SymfonyCache\CacheFactory();
+$container['fileSystem'] = new \Zfegg\Psr11SymfonyCache\CacheFactory();
 
 // Second cache using a different cache configuration
 $container['someOtherAdaptor'] = function ($c) {
-    return \Blazon\PSR11SymfonyCache\CacheFactory::someOtherAdaptor($c);
+    return \Zfegg\Psr11SymfonyCache\CacheFactory::someOtherAdaptor($c);
 };
 
 
