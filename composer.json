@@ -2,7 +2,13 @@
   "name": "zfegg/psr11-symfony-cache",
   "type": "library",
   "description": "Symfony Cache Component Factories for PSR-11",
-  "homepage": "https://gitlab.com/zfegg/psr11-symfony-cache",
+  "homepage": "https://github.com/zfegg/psr11-symfony-cache",
+  "keywords": [
+    "symfony",
+    "cache",
+    "psr11",
+    "factory"
+  ],
   "authors": [
     {
       "name": "Moln xie",
