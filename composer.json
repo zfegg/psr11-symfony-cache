@@ -27,7 +27,6 @@
     "ext-memcached": "*",
     "ext-pdo": "*",
     "ext-redis": "*",
-    "doctrine/cache": "^2.1",
     "friendsofphp/php-cs-fixer": "^3.0",
     "phpunit/phpunit": "^9.5",
     "phpstan/phpstan": "^0.12",

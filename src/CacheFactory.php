@@ -11,7 +11,6 @@ use Zfegg\Psr11SymfonyCache\Adapter\ArrayAdapterFactory;
 use Zfegg\Psr11SymfonyCache\Adapter\ChainAdapterFactory;
 use Zfegg\Psr11SymfonyCache\Adapter\ContainerAwareInterface;
 use Zfegg\Psr11SymfonyCache\Adapter\CouchbaseAdapterFactory;
-use Zfegg\Psr11SymfonyCache\Adapter\DoctrineAdapterFactory;
 use Zfegg\Psr11SymfonyCache\Adapter\FactoryInterface;
 use Zfegg\Psr11SymfonyCache\Adapter\FilesystemAdapterFactory;
 use Zfegg\Psr11SymfonyCache\Adapter\MemcachedAdapterFactory;
@@ -77,8 +76,6 @@ class CacheFactory
                 return ChainAdapterFactory::class;
             case 'couchbase':
                 return CouchbaseAdapterFactory::class;
-            case 'doctrine':
-                return DoctrineAdapterFactory::class;
             case 'filesystem':
                 return FilesystemAdapterFactory::class;
             case 'memcached':
