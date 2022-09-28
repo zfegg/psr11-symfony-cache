@@ -18,7 +18,7 @@
   ],
   "license" : "MIT",
   "require": {
-    "php": "^7.3",
+    "php": "^7.3 | ^8.0",
     "psr/container": "^1.0.0 | ^2.0",
     "symfony/cache": "^5.3 | ^6.0"
   },
