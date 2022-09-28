@@ -1,0 +1,72 @@
+{
+  "name": "blazon/psr11-symfony-cache",
+  "type": "library",
+  "description": "Symfony Cache Component Factories for PSR-11",
+  "homepage": "https://gitlab.com/blazon/psr11-symfony-cache",
+  "authors": [
+    {
+      "name": "Westin Shafer",
+      "email": "shafer_w2002@yahoo.com",
+      "homepage": "https://github.com/wshafer"
+    }
+  ],
+  "license" : "BSD-2-Clause",
+  "require": {
+    "php": "^7.3",
+    "psr/container": "^1.0.0 | ^2.0",
+    "symfony/cache": "^5.3"
+  },
+  "require-dev": {
+    "ext-couchbase": "*",
+    "ext-memcached": "*",
+    "ext-pdo": "*",
+    "ext-redis": "*",
+    "doctrine/cache": "^2.1",
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "phpunit/phpunit": "^9.5",
+    "phpstan/phpstan": "^0.12",
+    "squizlabs/php_codesniffer": "^3.6",
+    "phpmd/phpmd": "^2.10",
+    "predis/predis": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Zfegg\\Psr11SymfonyCache\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Zfegg\\Psr11SymfonyCache\\Test\\": "tests/"
+    }
+  },
+
+  "scripts": {
+    "php-version": "php -v",
+    "php-modules": "php -m",
+    "php-info": "php -i",
+    "php-cs-fixer": "php-cs-fixer --rules=@PSR12",
+    "phpcs": "phpcs --extensions=php --standard=PSR12 --ignore=*/_files/* src/ tests/",
+    "phpmd": "phpmd ./src text ./phpmd.xml --suffixes php",
+    "phpstan": "phpstan -n --no-ansi analyse --no-progress --level=5 src/",
+    "phpunit": "phpunit",
+    "phpunit-ci": "phpunit --coverage-clover clover.xml",
+    "test": [
+      "Composer\\Config::disableProcessTimeout",
+      "@phpcs",
+      "@phpmd",
+      "@phpstan",
+      "@phpunit"
+    ],
+    "test-ci": [
+      "Composer\\Config::disableProcessTimeout",
+      "@phpcs",
+      "@phpmd",
+      "@phpstan",
+      "@phpunit-ci"
+    ]
+  },
+
+  "config": {
+    "sort-packages": true
+  }
+}
