@@ -66,6 +66,11 @@ class APCuAdapterFactoryTest extends TestCase
 
         $mockContainer = $this->createMock(ContainerInterface::class);
         $mockContainer->expects($this->once())
+            ->method('has')
+            ->with($this->equalTo('config'))
+            ->willReturn(true);
+
+        $mockContainer->expects($this->once())
             ->method('get')
             ->with($this->equalTo('config'))
             ->willReturn([
