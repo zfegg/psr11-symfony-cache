@@ -1,20 +1,20 @@
 {
-  "name": "blazon/psr11-symfony-cache",
+  "name": "zfegg/psr11-symfony-cache",
   "type": "library",
   "description": "Symfony Cache Component Factories for PSR-11",
-  "homepage": "https://gitlab.com/blazon/psr11-symfony-cache",
+  "homepage": "https://gitlab.com/zfegg/psr11-symfony-cache",
   "authors": [
     {
-      "name": "Westin Shafer",
-      "email": "shafer_w2002@yahoo.com",
-      "homepage": "https://github.com/wshafer"
+      "name": "Moln xie",
+      "email": "moln.xie@gmail.com",
+      "homepage": "https://github.com/moln"
     }
   ],
-  "license" : "BSD-2-Clause",
+  "license" : "MIT",
   "require": {
     "php": "^7.3",
     "psr/container": "^1.0.0 | ^2.0",
-    "symfony/cache": "^5.3"
+    "symfony/cache": "^5.3 | ^6.0"
   },
   "require-dev": {
     "ext-couchbase": "*",
@@ -49,7 +49,7 @@
     "phpmd": "phpmd ./src text ./phpmd.xml --suffixes php",
     "phpstan": "phpstan -n --no-ansi analyse --no-progress --level=5 src/",
     "phpunit": "phpunit",
-    "phpunit-ci": "phpunit --coverage-clover clover.xml",
+    "phpunit-ci": "phpunit --coverage-clover build/logs/clover.xml",
     "test": [
       "Composer\\Config::disableProcessTimeout",
       "@phpcs",

@@ -1,6 +1,11 @@
-[![codecov](https://codecov.io/gl/zfegg/psr11-symfony-cache/branch/master/graph/badge.svg?token=4qrIUhkR2g)](https://codecov.io/gl/zfegg/psr11-symfony-cache)
-[![pipeline status](https://gitlab.com/zfegg/psr11-symfony-cache/badges/master/pipeline.svg)](https://gitlab.com/zfegg/psr11-symfony-cache/-/commits/master)
 # PSR-11 Symfony Cache
+
+[![GitHub Actions: Run tests](https://github.com/zfegg/psr11-symfony-cache/workflows/qa/badge.svg)](https://github.com/zfegg/psr11-symfony-cache/actions?query=workflow%3A%22qa%22)
+[![Coverage Status](https://coveralls.io/repos/github/zfegg/psr11-symfony-cache/badge.svg?branch=master)](https://coveralls.io/github/zfegg/psr11-symfony-cache?branch=master)
+[![Latest Stable Version](http://poser.pugx.org/zfegg/psr11-symfony-cache/v)](https://packagist.org/packages/zfegg/psr11-symfony-cache)
+[![Total Downloads](http://poser.pugx.org/zfegg/psr11-symfony-cache/downloads)](https://packagist.org/packages/zfegg/psr11-symfony-cache)
+[![License](http://poser.pugx.org/zfegg/psr11-symfony-cache/license)](https://packagist.org/packages/zfegg/psr11-symfony-cache)
+[![PHP Version Require](http://poser.pugx.org/zfegg/psr11-symfony-cache/require/php)](https://packagist.org/packages/zfegg/psr11-symfony-cache)
 
 [Symfony Cache Component](https://symfony.com/doc/current/components/cache.html) Factories for PSR-11.
 
