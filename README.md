@@ -29,7 +29,6 @@
     - [Array](#array)
     - [Chain](#chain)
     - [Couchbase](#couchbase)
-    - [Doctrine](#doctrine)
     - [Filesystem](#filesystem)
     - [Memcached](#memcached)
     - [PDO & Doctrine DBAL](#pdo-and-doctrine-dbal)
@@ -491,29 +490,6 @@ return [
 ```
 
 Docs: [Couchbase Cache Adapter](https://symfony.com/doc/current/components/cache/adapters/couchbasebucket_adapter.html)
-
-#### Doctrine
-This adapter wraps any class extending the Doctrine Cache abstract provider, allowing you to use these providers in 
-your application as if they were Symfony Cache adapters.
-
-```php
-<?php
-
-return [
-    'symfonyCache' => [
-        'default' => [  
-            'type' => 'Doctrine',
-            'options' => [
-                'provider' => 'service-name', // Required : Doctrine Cache Service name.  Will be pulled from the container.
-                'namespace' => '', // Optional : a string prefixed to the keys of the items.
-                'maxLifetime' => 0, // Optional : The max lifetime of items propagated from lower adapters to upper ones
-            ],
-        ],
-    ],
-];
-```
-
-Docs: [Doctrine Cache Adapter](https://symfony.com/doc/current/components/cache/adapters/doctrine_adapter.html)
 
 #### Filesystem
 This adapter offers improved application performance for those who cannot install tools like APCu or Redis in their
