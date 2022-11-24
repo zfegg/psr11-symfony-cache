@@ -84,6 +84,6 @@ class APCuAdapterFactoryTest extends TestCase
 
         $factory = new CacheFactory();
         $result = $factory($mockContainer);
-        $this->assertEquals($mockAdapter, $result);
+        $this->assertInstanceOf(ApcuAdapter::class, $result);
     }
 }
