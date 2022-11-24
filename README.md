@@ -86,7 +86,7 @@ $container = new \Xtreamwayz\Pimple\Container([
     
     // Config
     'config' => [
-        'symfonyCache' => [
+        'cache' => [
             // At the bare minimum you must include a default adaptor.
             'default' => [  
                 'type' => '',
@@ -127,7 +127,7 @@ $cache->delete('my_cache_key');
 
 ```php
 // Create the container and define the services you'd like to use
-$container = new \Zend\ServiceManager\ServiceManager([
+$container = new \Laminas\ServiceManager\ServiceManager([
     'factories' => [
         // Cache using the default keys.
         'fileSystem' => \Zfegg\Psr11SymfonyCache\CacheFactory::class,
@@ -139,7 +139,7 @@ $container = new \Zend\ServiceManager\ServiceManager([
 
 // Config
 $container->setService('config', [
-    'symfonyCache' => [
+    'cache' => [
         // At the bare minimum you must include a default adaptor.
         'default' => [  
             'type' => '',
@@ -172,6 +172,18 @@ echo $value; // 'foobar'
 
 // ... and to remove the cache key
 $cache->delete('my_cache_key');
+
+// CacheServiceAbstractFactory
+
+$container->addAbstractFactory(\Zfegg\Psr11SymfonyCache\CacheServiceAbstractFactory::class);
+
+$cacheDefault = $container->get("cache.default");
+$cacheSomeOtherAdaptor = $container->get("cache.someOtherAdaptor");
+
+// Get a psr 16 simple cache
+$psr16CacheDefault = $container->get("simple-cache.default");
+$psr16CacheSomeOtherAdaptor = $container->get("simple-cache.someOtherAdaptor");
+
 ```
 
 # Frameworks
@@ -182,7 +194,22 @@ You'll need to add configuration and register the services you'd like to use.  T
 but the recommended way is to create a new config file `config/autoload/cache.global.php`
 
 ### Configuration
-config/autoload/cache.global.php
+
+`config/config.php`
+
+Add `CacheServiceAbstractFactory` of `ServiceManager`. 
+
+```php
+<?php
+
+$providers = [
+//  ...
+\Zfegg\Psr11SymfonyCache\ConfigProvider::class,
+]
+```
+
+
+`config/autoload/cache.global.php`
 ```php
 <?php
 return [
@@ -194,9 +221,11 @@ return [
             // Second cache using a different filesystem configuration
             'someOtherAdaptor' => [\Zfegg\Psr11SymfonyCache\CacheFactory::class, 'someOtherAdaptor'],
         ],
+        'aliases' => [
+           \Psr\Cache\CacheItemPoolInterface::class => 'fileSystem',
+        ],
     ],
-    
-    'symfonyCache' => [
+    'cache' => [
         // At the bare minimum you must include a default adaptor.
         'default' => [  
             'type' => '',
@@ -231,9 +260,12 @@ return [
             // Second cache using a different configuration
             'someOtherAdaptor' => [\Zfegg\Psr11SymfonyCache\CacheFactory::class, 'someOtherAdaptor'],
         ],
+        'aliases' => [
+           \Psr\Cache\CacheItemPoolInterface::class => 'fileSystem',
+        ],
     ],
     
-    'symfonyCache' => [
+    'cache' => [
         // At the bare minimum you must include a default adaptor.
         'default' => [  
             'type' => '',
@@ -266,7 +298,7 @@ require '../vendor/autoload.php';
 // Add Configuration
 $config = [
     'settings' => [
-        'symfonyCache' => [
+        'cache' => [
             // At the bare minimum you must include a default adaptor.
             'default' => [  
                 'type' => '',
@@ -332,7 +364,7 @@ A minimal configuration would consist of at least defining one service and the "
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => '',
             'options' => [],
@@ -351,7 +383,7 @@ Note: A "default" adaptor is required.
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         // At the bare minimum you must include a default adaptor.
         'default' => [  
             'type' => '',
@@ -382,7 +414,7 @@ filesystem.
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'APCu',
             'options' => [
@@ -407,7 +439,7 @@ caches, due to the getValues() method
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'Array',
             'options' => [
@@ -433,7 +465,7 @@ for creating a layered cache.
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'Chain',
             'options' => [
@@ -458,7 +490,7 @@ fail-over is also available.
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'Couchbase',
             'options' => [
@@ -500,7 +532,7 @@ locally mounted filesystem.
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'Filesystem',
             'options' => [
@@ -525,7 +557,7 @@ fail-over is also available.
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'Memcached',
             'options' => [
@@ -578,7 +610,7 @@ This adapter stores the cache items in an SQL database.
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'PDO',
             'options' => [
@@ -613,7 +645,7 @@ preloaded into OPcache memory storage. It is suited for any data that is mostly 
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'PhpArray',
             'options' => [
@@ -636,7 +668,7 @@ cache adapter, the PHP Files cache adapter writes and reads back these cache fil
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'PhpFiles',
             'options' => [
@@ -666,7 +698,7 @@ the creation of several namespaced pools out of a single one.
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'proxy',
             'options' => [
@@ -695,7 +727,7 @@ provide redundancy and/or fail-over is also available.
 <?php
 
 return [
-    'symfonyCache' => [
+    'cache' => [
         'default' => [  
             'type' => 'Redis',
             'options' => [
