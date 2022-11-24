@@ -57,7 +57,7 @@
     "phpmd": "phpmd ./src text ./phpmd.xml --suffixes php",
     "phpstan": "phpstan -n --no-ansi analyse --no-progress --level=5 src/",
     "phpunit": "phpunit",
-    "phpunit-ci": "phpunit --coverage-clover build/logs/clover.xml",
+    "phpunit-ci": "phpunit --coverage-clover clover.xml",
     "test": [
       "Composer\\Config::disableProcessTimeout",
       "@phpcs",
