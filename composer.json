@@ -18,9 +18,9 @@
   ],
   "license" : "MIT",
   "require": {
-    "php": "^7.3 | ^8.0",
+    "php": "^8.2",
     "psr/container": "^1.0.0 | ^2.0",
-    "symfony/cache": "^5.3 | ^6.0"
+    "symfony/cache": "^7.0"
   },
   "require-dev": {
     "ext-couchbase": "*",
