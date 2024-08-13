@@ -28,7 +28,7 @@
     "ext-pdo": "*",
     "ext-redis": "*",
     "friendsofphp/php-cs-fixer": "^3.0",
-    "laminas/laminas-servicemanager": "^3.0",
+    "laminas/laminas-servicemanager": "^4.1",
     "phpmd/phpmd": "^2.10",
     "phpstan/phpstan": "^0.12",
     "phpunit/phpunit": "^9.5",

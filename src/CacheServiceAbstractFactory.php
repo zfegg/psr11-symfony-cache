@@ -13,9 +13,9 @@ class CacheServiceAbstractFactory implements AbstractFactoryInterface
     /**
      * @inheritdoc
      */
-    public function canCreate(ContainerInterface $container, $requestedName)
+    public function canCreate(ContainerInterface $container, string $requestedName): bool
     {
-        if (strpos($requestedName, 'cache.') !== 0 && strpos($requestedName, 'simple-cache.') !== 0) {
+        if (!str_starts_with($requestedName, 'cache.') && !str_starts_with($requestedName, 'simple-cache.')) {
             return false;
         }
 
@@ -30,7 +30,7 @@ class CacheServiceAbstractFactory implements AbstractFactoryInterface
     /**
      * @inheritdoc
      */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, string $requestedName, ?array $options = null): mixed
     {
         [$type, $name] = explode('.', $requestedName, 2);
 
